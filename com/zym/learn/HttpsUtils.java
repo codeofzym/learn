@@ -21,7 +21,7 @@ public class HttpsUtils {
     private static final String REQUEST_POST = "POST";
     private static final String ENCODE = "GBK";
 
-    public static StringBuffer crawlingFromWebWithoutJS(String url) {
+    public static StringBuffer crawlingFromWebWithoutJS(String url, String encode) {
         StringBuffer result = new StringBuffer();
         if(url == null) {
             return result;
@@ -42,7 +42,7 @@ public class HttpsUtils {
 
                 InputStream is = con.getInputStream();
                 while((count = is.read(buf, 0, buf.length)) > -1) {
-                    result.append(new String(buf, 0, count, ENCODE));
+                    result.append(new String(buf, 0, count, encode));
                 }
                 is.close();
                 con.disconnect();
